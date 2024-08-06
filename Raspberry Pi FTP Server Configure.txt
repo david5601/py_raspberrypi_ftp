@@ -1,0 +1,39 @@
+#File and Folder Delete
+sudo rm -r example_directory
+
+
+sudo apt-get update
+sudo apt-get install vsftpd
+
+sudo nano /etc/vsftpd.conf
+
+# Allow local users to login
+local_enable=YES
+
+# Enable write permissions
+write_enable=YES
+
+# Chroot the local users to their home directories
+chroot_local_user=YES
+
+# Allow local users to upload files
+allow_writeable_chroot=YES
+
+# Set the local root directory for the FTP server
+local_root=/home/mike/ftp
+
+# Other optional settings
+# pasv_min_port=40000
+# pasv_max_port=50000
+
+sudo mkdir -p /home/mike/ftp
+sudo chown mike:mike /home/mike/ftp
+sudo chmod 777 /home/mike/ftp
+
+sudo adduser mike
+
+sudo systemctl restart vsftpd
+
+sudo systemctl restart vsftpd
+
+
